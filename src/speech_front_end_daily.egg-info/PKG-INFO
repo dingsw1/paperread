@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: speech-front-end-daily
+Version: 0.1.0
+Summary: 语音前端论文速递 - 获取 arXiv 音频前端论文并生成网页日报
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: requests>=2.31.0
+Requires-Dist: beautifulsoup4>=4.12.0
+Requires-Dist: lxml>=4.9.0
+Provides-Extra: dev
+Requires-Dist: ruff>=0.1.0; extra == "dev"
+Requires-Dist: mypy>=1.7.0; extra == "dev"
+Requires-Dist: types-requests>=2.31.0; extra == "dev"
+Requires-Dist: types-beautifulsoup4>=4.12.0; extra == "dev"

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语音前端论文速递</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #1a1a2e;
+            color: #e5e5e5;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { 
+            font-size: 1.8rem; 
+            margin-bottom: 20px; 
+            color: #fff;
+            text-align: center;
+        }
+        .overview {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .overview h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat-item {
+            background: #0f3460;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+        .stat-label { color: #94a3b8; font-size: 0.9rem; }
+        .stat-value { color: #fff; font-size: 1.5rem; font-weight: bold; }
+        .category-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .category-tag {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .category-block {
+            margin-bottom: 30px;
+        }
+        .category-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid;
+        }
+        .paper-card {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        .paper-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .paper-title {
+            font-size: 1.1rem;
+            color: #fff;
+            flex: 1;
+        }
+        .paper-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .paper-title a:hover {
+            color: #60a5fa;
+        }
+        .tag {
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .paper-meta {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin: 8px 0;
+        }
+        .paper-meta span { margin-right: 15px; }
+        .abstract {
+            background: #0f3460;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+        details {
+            margin-top: 10px;
+        }
+        summary {
+            cursor: pointer;
+            color: #60a5fa;
+            font-size: 0.9rem;
+        }
+        .tech-content {
+            background: #0f3460;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        .tech-content h4 {
+            color: #fff;
+            margin: 10px 0 5px;
+        }
+        .tech-content ul {
+            margin-left: 20px;
+            color: #cbd5e1;
+        }
+        .results { margin-top: 10px; padding: 10px; background: #0f3460; border-radius: 8px; }
+        .results span { display: inline-block; margin-right: 15px; color: #94a3b8; font-size: 0.85rem; }
+        .sota { margin-top: 10px; font-size: 0.9rem; }
+        .concerns { margin-top: 10px; padding: 10px; background: #3d1f1f; border-radius: 8px; font-size: 0.85rem; color: #fca5a5; }
+        .reason { margin-top: 10px; padding: 10px; background: #1e3a5f; border-radius: 8px; font-size: 0.9rem; }
+        .engineering { margin-top: 10px; font-size: 0.9rem; }
+        .score { font-size: 1.2rem; font-weight: bold; color: #fbbf24; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎙️ 语音前端论文速递<p style="color:#94a3b8;margin-top:10px;">📅 2026-03-24</p></h1><div class="overview">
+            <h2>📊 概览</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">论文总数</div>
+                </div>
+            </div>
+            <div class="category-stats"><span class="category-tag" style="background:#0891B2">DOA: 1</span><span class="category-tag" style="background:#4F46E5">Dereverberation: 2</span><span class="category-tag" style="background:#DC2626">Noise Suppression: 1</span><span class="category-tag" style="background:#059669">Speech Enhancement: 2</span><span class="category-tag" style="background:#BE185D">Target Speaker Extraction: 2</span></div>
+        </div><div class="category-block"><h2 class="category-title" style="border-color:#059669">🎯 Speech Enhancement</h2><div class="paper-card">
+            <div class="paper-header">
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.20242v1" target="_blank">1. LL-SDR: Low-Latency Speech enhancement through Discrete Representations</a></h3>
+                <span class="tag" style="background:#059669">Speech Enhancement</span>
+            </div>
+            <div class="paper-meta">
+                <span>📄 <a href="https://arxiv.org/abs/2603.20242v1" target="_blank">2603.20242</a></span>
+                <span>📑 <a href="https://arxiv.org/pdf/2603.20242v1.pdf" target="_blank">PDF</a></span></div>
+            <div class="paper-meta"><span>👥 Jingyi Li, Luca Della Libera, Mirco Ravanelli, Cem Subakan</span></div>
+            <div class="abstract"><b>简介：</b>论文提出LL-SDR，一种基于离散表示的低延迟语音增强框架，通过方差有序残差向量量化器（VO-RVQ）和潜在空间判别器，有效分离语音和噪声分布。</div>
+            <details>
+                <summary>🔧 技术方案</summary>
+                <div class="tech-content">
+                    <h4>💡 核心创新</h4>
+                    <p>引入方差有序残差向量量化器（VO-RVQ），通过三角形掩码结构显式分离语音和噪声分布。</p>
+                    <h4>🏗️ 模型架构</h4>
+                    <p>LL-SDR由编码器、VO-RVQ量化器和解码器组成，输入为噪声语音，输出为增强后的语音。</p>
+                    <h4>🎯 训练策略</h4>
+                    <p>使用多目标损失函数，包括波形重建、多分辨率频谱损失、对抗损失和表示对齐损失。</p>
+                    <h4>📊 数据集</h4>
+                    <p>LibriSpeech-100, DNS Challenge, DEMAND</p>
+                    <h4>📈 Baseline对比</h4>
+                    <p>Conv-TasNet, Demucs, FRCRN, SELM, MaskSR, AnyEnhance, GenSE, LLaSE-G1</p>
+                </div>
+            </details>
+            <div class="results"><span>📊 实验结果：</span><span>PESQ: 未报告</span> <span>STOI: 未报告</span> <span>SI_SDR: 未报告</span> <span>DNSMOS: 具体数值未提供，但显著优于基线</span> <span>other: 实时因子（RTF）显著降低</span> </div>
+            <div class="sota"><span>🏆 SOTA声明：</span><span style="color:#6B7280">否</span></div>
+            <div class="concerns"><span>⚠️ 潜在问题：</span>未报告PESQ、STOI等传统指标，可能影响与其他方法的直接对比。</div>
+            <div class="reason"><b>💭 评价：</b>创新性较高，VO-RVQ的设计新颖且有效；实验充分，对比了多种基线方法；工程价值较高，低延迟特性适合实时应用。</div>
+            <div class="engineering"><span>🔧 工程价值：</span><span style="color:#10B981">高</span></div>
+            <p class="score">⭐ 8/10</p>
+        </div><div class="paper-card">
+            <div class="paper-header">
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.21608v1" target="_blank">2. DiT-Flow: Speech Enhancement Robust to Multiple Distortions based on Flow Matching in Latent Space and Diffusion Transformers</a></h3>
+                <span class="tag" style="background:#059669">Speech Enhancement</span>
+            </div>
+            <div class="paper-meta">
+                <span>📄 <a href="https://arxiv.org/abs/2603.21608v1" target="_blank">2603.21608</a></span>
+                <span>📑 <a href="https://arxiv.org/pdf/2603.21608v1.pdf" target="_blank">PDF</a></span></div>
+            <div class="paper-meta"><span>👥 Tianyu Cao, Helin Wang, Ari Frummer, Yuval Sieradzki, Adi Arbel...</span></div>
+            <div class="abstract"><b>简介：</b>论文提出DiT-Flow，一种基于流匹配和扩散Transformer的语音增强框架，旨在解决多种失真条件下的语音增强问题，核心贡献是结合流匹配和扩散Transformer实现鲁棒的语音增强。</div>
+            <details>
+                <summary>🔧 技术方案</summary>
+                <div class="tech-content">
+                    <h4>💡 核心创新</h4>
+                    <p>将流匹配与扩散Transformer结合，首次在语音增强任务中应用流匹配，并通过LoRA与MoE框架实现参数高效的多失真适应。</p>
+                    <h4>🏗️ 模型架构</h4>
+                    <p>DiT-Flow基于扩散Transformer架构，输入为失真语音，输出为增强后的语音，通过流匹配模块在VAE的潜在空间中学习从失真语音到干净语音的映射。</p>
+                    <h4>🎯 训练策略</h4>
+                    <p>采用条件流匹配损失，结合多分辨率STFT损失、对抗性特征匹配损失和KL散度惩罚，训练过程兼顾生成和对抗目标。</p>
+                    <h4>📊 数据集</h4>
+                    <p>StillSonicSet, WSJ0+Reverb, URGENT, LibriCSS, RealMAN</p>
+                    <h4>📈 Baseline对比</h4>
+                    <p>SGMSE, StoRM</p>
+                </div>
+            </details>
+            <div class="results"><span>📊 实验结果：</span><span>PESQ: 未明确</span> <span>STOI: 未明确</span> <span>SI_SDR: 未明确</span> <span>DNSMOS: SIG: 4.12 (Reverb-only), 4.05 (Noise-only), 3.98 (Reverb+Noise+Codec-Compression)</span> <span>other: OVRL: 4.08 (Reverb-only), 4.01 (Noise-only), 3.95 (Reverb+Noise+Codec-Compression)</span> </div>
+            <div class="sota"><span>🏆 SOTA声明：</span><span style="color:#10B981">是</span></div>
+            <div class="concerns"><span>⚠️ 潜在问题：</span>模型复杂度较高，推理时可能需要较多计算资源；DNSMOS指标虽高，但PESQ、STOI等传统指标未明确，可能影响与传统方法的直接对比。</div>
+            <div class="reason"><b>💭 评价：</b>创新性高，首次将流匹配与扩散Transformer结合应用于语音增强；实验充分，在多个数据集上验证了模型的有效性；工程价值中等，模型复杂度较高，但通过LoRA与MoE框架实现了参数高效。</div>
+            <div class="engineering"><span>🔧 工程价值：</span><span style="color:#F59E0B">中</span></div>
+            <p class="score">⭐ 8/10</p>
+        </div></div><div class="category-block"><h2 class="category-title" style="border-color:#DC2626">🎯 Noise Suppression</h2><div class="paper-card">
+            <div class="paper-header">
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.20387v1" target="_blank">1. End-to-End Multi-Task Learning for Adjustable Joint Noise Reduction and Hearing Loss Compensation</a></h3>
+                <span class="tag" style="background:#DC2626">Noise Suppression</span>
+            </div>
+            <div class="paper-meta">
+                <span>📄 <a href="https://arxiv.org/abs/2603.20387v1" target="_blank">2603.20387</a></span>
+                <span>📑 <a href="https://arxiv.org/pdf/2603.20387v1.pdf" target="_blank">PDF</a></span></div>
+            <div class="paper-meta"><span>👥 Philippe Gonzalez, Vera Margrethe Frederiksen, Torsten Dau, Tobias May</span></div>
+            <div class="abstract"><b>简介：</b>论文提出了一种端到端多任务学习框架，用于联合优化噪声抑制（NR）和听力损失补偿（HLC）的单一深度神经网络（DNN），核心贡献是通过可微分听觉模型实现个性化调整和端到端优化。</div>
+            <details>
+                <summary>🔧 技术方案</summary>
+                <div class="tech-content">
+                    <h4>💡 核心创新</h4>
+                    <p>首次使用可微分听觉模型训练单一DNN实现NR和HLC的联合优化，并通过指数化掩码实现独立调整。</p>
+                    <h4>🏗️ 模型架构</h4>
+                    <p>基于BSRNN的DNN架构，输入为STFT和听力图，输出为两个时频掩码（NR和HLC），通过指数化参数独立调整后合并。</p>
+                    <h4>🎯 训练策略</h4>
+                    <p>采用多任务不确定性加权损失（MAE），使用复杂值掩码，数据增强包括动态生成混响和噪声场景。</p>
+                    <h4>📊 数据集</h4>
+                    <p>DNS5, LibriSpeech, MLS, VCTK, EARS, WHAM!, FSD50K, FMA, Clarity, TUT</p>
+                    <h4>📈 Baseline对比</h4>
+                    <p>DNN-NR（单独NR）、DNN-HLC（单独HLC）、NAL-R（传统助听器处方）</p>
+                </div>
+            </details>
+            <div class="results"><span>📊 实验结果：</span><span>PESQ: 3.12（最佳配置）</span> <span>STOI: 未明确</span> <span>SI_SDR: 未明确</span> <span>DNSMOS: 未明确</span> <span>other: HASPI: 显著优于NAL-R；HASQI: 低于NAL-R（因评测偏差）</span> </div>
+            <div class="sota"><span>🏆 SOTA声明：</span><span style="color:#10B981">是</span></div>
+            <div class="concerns"><span>⚠️ 潜在问题：</span>延迟较高（32ms），HASQI评测存在偏差，未验证实际听障用户主观体验。</div>
+            <div class="reason"><b>💭 评价：</b>创新性：提出可微分听觉模型和独立调整机制；实验充分性：对比多种基线并分析参数影响；工程价值：支持个性化且无需重训练，但实时性待优化。</div>
+            <div class="engineering"><span>🔧 工程价值：</span><span style="color:#F59E0B">中</span></div>
+            <p class="score">⭐ 8/10</p>
+        </div></div><div class="category-block"><h2 class="category-title" style="border-color:#0891B2">🎯 DOA</h2><div class="paper-card">
+            <div class="paper-header">
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.17377v1" target="_blank">1. Uncertainty Quantification and Risk Control for Multi-Speaker Sound Source Localization</a></h3>
+                <span class="tag" style="background:#0891B2">DOA</span>
+            </div>
+            <div class="paper-meta">
+                <span>📄 <a href="https://arxiv.org/abs/2603.17377v1" target="_blank">2603.17377</a></span>
+                <span>📑 <a href="https://arxiv.org/pdf/2603.17377v1.pdf" target="_blank">PDF</a></span></div>
+            <div class="paper-meta"><span>👥 Vadim Rozenfeld, Bracha Laufer Goldshtein</span></div>
+            <div class="abstract"><b>简介：</b>论文提出一种多说话人声源定位的不确定性量化与风险控制方法，核心贡献是建立概率框架来评估定位结果的置信度</div>
+            <details>
+                <summary>🔧 技术方案</summary>
+                <div class="tech-content">
+                    <h4>💡 核心创新</h4>
+                    <p>首次将conformal prediction理论引入声源定位，实现统计保证的置信区间估计</p>
+                    <h4>🏗️ 模型架构</h4>
+                    <p>基于TDOA特征的概率模型，输出方位角估计及置信区间，网络结构未明确说明</p>
+                    <h4>🎯 训练策略</h4>
+                    <p>采用负对数似然损失，数据增强包含混响和噪声模拟</p>
+                    <h4>📊 数据集</h4>
+                    <p>未明确说明具体数据集</p>
+                    <h4>📈 Baseline对比</h4>
+                    <p>传统SRP-PHAT方法</p>
+                </div>
+            </details>
+            <div class="results"><span>📊 实验结果：</span><span>PESQ: 未报告</span> <span>STOI: 未报告</span> <span>SI_SDR: 未报告</span> <span>DNSMOS: 未报告</span> <span>other: 方位角误差降低23%，置信区间覆盖率达标率95%</span> </div>
+            <div class="concerns"><span>⚠️ 潜在问题：</span>未验证真实场景数据，未与深度学习定位方法对比，计算复杂度分析缺失</div>
+            <div class="reason"><b>💭 评价：</b>创新性体现在统计理论的应用，但实验仅验证仿真数据且缺乏语音增强指标，工程价值取决于具体场景需求</div>
+            <div class="engineering"><span>🔧 工程价值：</span><span style="color:#F59E0B">中</span></div>
+            <p class="score">⭐ 7/10</p>
+        </div></div><div class="category-block"><h2 class="category-title" style="border-color:#4F46E5">🎯 Dereverberation</h2><div class="paper-card">
+            <div class="paper-header">
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.21684v1" target="_blank">1. LipsAM: Lipschitz-Continuous Amplitude Modifier for Audio Signal Processing and its Application to Plug-and-Play Dereverberation</a></h3>
+                <span class="tag" style="background:#4F46E5">Dereverberation</span>
+            </div>
+            <div class="paper-meta">
+                <span>📄 <a href="https://arxiv.org/abs/2603.21684v1" target="_blank">2603.21684</a></span>
+                <span>📑 <a href="https://arxiv.org/pdf/2603.21684v1.pdf" target="_blank">PDF</a></span></div>
+            <div class="paper-meta"><span>👥 Kazuki Matsumoto, Ren Uchida, Kohei Yatabe</span></div>
+            <div class="abstract"><b>简介：</b>论文提出了一种Lipschitz连续的幅度调制器（LipsAM），用于音频信号处理，并应用于即插即用的语音去混响任务，核心贡献是证明了AM的Lipschitz连续性条件并提出了两种具体架构。</div>
+            <details>
+                <summary>🔧 技术方案</summary>
+                <div class="tech-content">
+                    <h4>💡 核心创新</h4>
+                    <p>首次在音频幅度调制器中引入Lipschitz连续性理论保证，通过约束输出幅度的上界实现稳定性。</p>
+                    <h4>🏗️ 模型架构</h4>
+                    <p>基于STFT域幅度处理框架，提出LipsAM-SE（信号估计）和LipsAM-RE（残差估计）两种架构，通过min/ReLU层确保输出不超过输入幅度。</p>
+                    <h4>🎯 训练策略</h4>
+                    <p>使用负SNR作为损失函数，在LibriTTS-R数据集上训练，采用正交卷积层约束Lipschitz常数。</p>
+                    <h4>📊 数据集</h4>
+                    <p>LibriTTS-R, BUT reverb database</p>
+                    <h4>📈 Baseline对比</h4>
+                    <p>传统AM-SE/AM-RE方法、基于ℓ1范数的软阈值方法</p>
+                </div>
+            </details>
+            <div class="results"><span>📊 实验结果：</span><span>PESQ: 未提供具体数值</span> <span>STOI: 未提供具体数值</span> <span>SI_SDR: LipsAM-RE表现最佳（未提供具体值）</span> <span>DNSMOS: 未测试</span> <span>other: ViSQOL（未提供具体值）</span> </div>
+            <div class="concerns"><span>⚠️ 潜在问题：</span>1) 仅验证了高斯噪声场景 2) 未与主流去混响方法（如WPE）对比 3) 实时性分析缺失</div>
+            <div class="reason"><b>💭 评价：</b>创新性：理论贡献显著但应用场景有限（7/10）；实验充分性：验证了稳定性但缺乏客观指标对比（6/10）；工程价值：PnP框架兼容性好但计算复杂度未分析（8/10）</div>
+            <div class="engineering"><span>🔧 工程价值：</span><span style="color:#F59E0B">中</span></div>
+            <p class="score">⭐ 7/10</p>
+        </div><div class="paper-card">
+            <div class="paper-header">
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.18485v1" target="_blank">2. ARTT: Augmented Reverberant-Target Training for Unsupervised Monaural Speech Dereverberation</a></h3>
+                <span class="tag" style="background:#4F46E5">Dereverberation</span>
+            </div>
+            <div class="paper-meta">
+                <span>📄 <a href="https://arxiv.org/abs/2603.18485v1" target="_blank">2603.18485</a></span>
+                <span>📑 <a href="https://arxiv.org/pdf/2603.18485v1.pdf" target="_blank">PDF</a></span></div>
+            <div class="paper-meta"><span>👥 Siqi Song, Fulin Wu, Zhong-Qiu Wang</span></div>
+            <div class="abstract"><b>简介：</b>论文提出了一种名为ARTT的无监督单通道语音去混响方法，通过两阶段训练（增强混响目标训练和自蒸馏）解决无干净参考信号下的去混响问题。</div>
+            <details>
+                <summary>🔧 技术方案</summary>
+                <div class="tech-content">
+                    <h4>💡 核心创新</h4>
+                    <p>核心创新在于提出混响目标训练（RTT）和在线自蒸馏机制，无需干净参考信号即可实现去混响。</p>
+                    <h4>🏗️ 模型架构</h4>
+                    <p>采用TF-GridNet作为DNN架构，输入为混响信号，输出为去混响后的语音信号。</p>
+                    <h4>🎯 训练策略</h4>
+                    <p>两阶段训练：RTT阶段使用混响目标损失，自蒸馏阶段结合EMA教师模型和噪声注入。</p>
+                    <h4>📊 数据集</h4>
+                    <p>WSJ0CAM-DEREVERB</p>
+                    <h4>📈 Baseline对比</h4>
+                    <p>WPE, USDnet, BUDDy, DNN-WPE</p>
+                </div>
+            </details>
+            <div class="results"><span>📊 实验结果：</span><span>PESQ: 2.61</span> <span>STOI: 未明确</span> <span>SI_SDR: -3.6dB→7.3dB (+10.9dB)</span> <span>DNSMOS: 未明确</span> <span>other: eSTOI</span> </div>
+            <div class="sota"><span>🏆 SOTA声明：</span><span style="color:#10B981">是</span></div>
+            <div class="concerns"><span>⚠️ 潜在问题：</span>自蒸馏阶段计算复杂度较高，可能影响实时应用；对极端混响环境泛化性未验证。</div>
+            <div class="reason"><b>💭 评价：</b>创新性高，提出无监督去混响新方法；实验充分，对比多个基线并验证各组件贡献；工程价值中，因无监督特性适合实际应用但计算复杂度需考虑。</div>
+            <div class="engineering"><span>🔧 工程价值：</span><span style="color:#F59E0B">中</span></div>
+            <p class="score">⭐ 8/10</p>
+        </div></div><div class="category-block"><h2 class="category-title" style="border-color:#BE185D">🎯 Target Speaker Extraction</h2><div class="paper-card">
+            <div class="paper-header">
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.19697v1" target="_blank">1. Plug-and-Steer: Decoupling Separation and Selection in Audio-Visual Target Speaker Extraction</a></h3>
+                <span class="tag" style="background:#BE185D">Target Speaker Extraction</span>
+            </div>
+            <div class="paper-meta">
+                <span>📄 <a href="https://arxiv.org/abs/2603.19697v1" target="_blank">2603.19697</a></span>
+                <span>📑 <a href="https://arxiv.org/pdf/2603.19697v1.pdf" target="_blank">PDF</a></span></div>
+            <div class="paper-meta"><span>👥 Doyeop Kwak, Suyeon Lee, Joon Son Chung</span></div>
+            <div class="abstract"><b>简介：</b>论文提出了一种名为Plug-and-Steer的新方法，用于音频-视觉目标说话人提取（AV-TSE），通过解耦分离和目标选择过程，保留预训练音频分离模型的高保真特性。</div>
+            <details>
+                <summary>🔧 技术方案</summary>
+                <div class="tech-content">
+                    <h4>💡 核心创新</h4>
+                    <p>核心创新在于引入Latent Steering Matrix (LSM)，通过简单的线性变换在特征层面对目标说话人进行重定向，避免了对音频分离模型的重新训练。</p>
+                    <h4>🏗️ 模型架构</h4>
+                    <p>模型架构包括一个冻结的音频分离模型和一个轻量级的视觉引导模块，视觉模块通过LSM对音频特征进行重定向，将目标说话人固定到指定输出通道。</p>
+                    <h4>🎯 训练策略</h4>
+                    <p>训练策略包括两阶段：首先训练LSM，然后训练视觉引导模块，使用SI-SNR和二元交叉熵损失进行优化。</p>
+                    <h4>📊 数据集</h4>
+                    <p>LRS2-2mix, Libri2Mix</p>
+                    <h4>📈 Baseline对比</h4>
+                    <p>AV-ConvTasNet, AV-DPRNN, AV-TFGridNet, AV-Mossformer2</p>
+                </div>
+            </details>
+            <div class="results"><span>📊 实验结果：</span><span>PESQ: 未明确</span> <span>STOI: 未明确</span> <span>SI_SDR: SI-SDRi提升幅度显著</span> <span>DNSMOS: 保持高保真特性</span> <span>other: NISQA</span> </div>
+            <div class="concerns"><span>⚠️ 潜在问题：</span>需要预训练音频分离模型，且在不同数据集上的泛化能力有待进一步验证。</div>
+            <div class="reason"><b>💭 评价：</b>创新性较高，通过解耦分离和目标选择，保留了音频分离模型的高保真特性；实验充分性较好，在多个数据集和模型上进行了验证；工程价值中等，方法简洁但需要预训练音频分离模型。</div>
+            <div class="engineering"><span>🔧 工程价值：</span><span style="color:#F59E0B">中</span></div>
+            <p class="score">⭐ 8/10</p>
+        </div><div class="paper-card">
+            <div class="paper-header">
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.16668v1" target="_blank">2. HRTF-guided Binaural Target Speaker Extraction with Real-World Validation</a></h3>
+                <span class="tag" style="background:#BE185D">Target Speaker Extraction</span>
+            </div>
+            <div class="paper-meta">
+                <span>📄 <a href="https://arxiv.org/abs/2603.16668v1" target="_blank">2603.16668</a></span>
+                <span>📑 <a href="https://arxiv.org/pdf/2603.16668v1.pdf" target="_blank">PDF</a></span></div>
+            <div class="paper-meta"><span>👥 Yoav Ellinson, Sharon Gannot</span></div>
+            <div class="abstract"><b>简介：</b>论文提出了一种基于HRTF的双耳目标说话人提取框架，解决了传统方法在空间定位失真和跨听众泛化能力不足的问题。</div>
+            <details>
+                <summary>🔧 技术方案</summary>
+                <div class="tech-content">
+                    <h4>💡 核心创新</h4>
+                    <p>利用HRTF作为显式空间先验，而非传统的DOA估计或注册信号，保留了双耳线索并提升了语音质量和可懂度。</p>
+                    <h4>🏗️ 模型架构</h4>
+                    <p>基于多通道深度盲源分离网络，输入为双耳混合信号和目标HRTF，输出为提取的目标说话人信号。</p>
+                    <h4>🎯 训练策略</h4>
+                    <p>使用SI-SDR和MAE损失函数，训练数据包括多样化的HRTF测量数据，支持跨听众泛化。</p>
+                    <h4>📊 数据集</h4>
+                    <p>WSJ0, ARI, SONICOM, RIEC, SADIE, SS2, Viking, HRIR CIRC360</p>
+                    <h4>📈 Baseline对比</h4>
+                    <p>DOA-BDE</p>
+                </div>
+            </details>
+            <div class="results"><span>📊 实验结果：</span><span>PESQ: 未明确</span> <span>STOI: 未明确</span> <span>SI_SDR: 未明确</span> <span>DNSMOS: 未明确</span> <span>other: NISQA评分提升</span> </div>
+            <div class="sota"><span>🏆 SOTA声明：</span><span style="color:#10B981">是</span></div>
+            <div class="concerns"><span>⚠️ 潜在问题：</span>HRTF数据库的角分辨率限制了空间精度，可能导致定位误差。</div>
+            <div class="reason"><b>💭 评价：</b>创新性高，利用HRTF作为空间先验，解决了传统方法的空间失真问题；实验充分，包括仿真和真实环境验证；工程价值高，适用于实际应用场景。</div>
+            <div class="engineering"><span>🔧 工程价值：</span><span style="color:#10B981">高</span></div>
+            <p class="score">⭐ 8/10</p>
+        </div></div></div>
+</body>
+</html>

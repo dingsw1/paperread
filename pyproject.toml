@@ -1,0 +1,37 @@
+[project]
+name = "speech-front-end-daily"
+version = "0.1.0"
+description = "语音前端论文速递 - 获取 arXiv 音频前端论文并生成网页日报"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=4.9.0",
+    "openai>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.1.0",
+    "mypy>=1.7.0",
+    "types-requests>=2.31.0",
+    "types-beautifulsoup4>=4.12.0",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_ignores = true
+no_implicit_optional = true
+
+[tool.uv]
+index-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+
+[tool.speech-daily]
+openai_api_key = ""
+openai_model = "gpt-4o-mini"

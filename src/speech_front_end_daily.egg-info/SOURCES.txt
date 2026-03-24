@@ -1,0 +1,12 @@
+pyproject.toml
+src/__init__.py
+src/arxiv_fetcher.py
+src/filter.py
+src/html_generator.py
+src/main.py
+src/paper_detail.py
+src/speech_front_end_daily.egg-info/PKG-INFO
+src/speech_front_end_daily.egg-info/SOURCES.txt
+src/speech_front_end_daily.egg-info/dependency_links.txt
+src/speech_front_end_daily.egg-info/requires.txt
+src/speech_front_end_daily.egg-info/top_level.txt
