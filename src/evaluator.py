@@ -73,10 +73,12 @@ def evaluate_paper(paper: dict[str, Any], api_key: str | None = None) -> dict[st
 摘要: {abstract}"""
 
     if full_content:
+        # 限制全文长度，避免 token 超限（截断到约 3000 字符）
+        truncated = full_content[:3000] + ("..." if len(full_content) > 3000 else "")
         user_prompt += f"""
 
 论文全文（摘录）:
-{full_content}"""
+{truncated}"""
 
     user_prompt += """
 

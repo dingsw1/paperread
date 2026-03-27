@@ -335,4 +335,33 @@ def generate_paper_card(paper: dict, index: int, category: str) -> str:
             <p class="score">⭐ {score}/10</p>
         </div>"""
 
+    # Append full-text parsed sections if available
+    ft = paper.get("fulltext_parsed")
+    if isinstance(ft, dict) and ft:
+        core_innov = html.escape(ft.get("core_innovations", ""))
+        datasets = html.escape(ft.get("datasets", ""))
+        experiments = html.escape(ft.get("experimental_parameters", ""))
+        results = html.escape(ft.get("results", ""))
+        limits = html.escape(ft.get("limitations", ""))
+        summary_full = html.escape(ft.get("analysis_summary", ""))
+        if summary_full or core_innov or datasets or experiments or results or limits:
+            card += """
+            <details>
+                <summary>🔎 全文解析</summary>
+                <div class=\"fulltext-content\">"""
+            if summary_full:
+                card += f"<p><strong>分析摘要:</strong> {summary_full}</p>"
+            if core_innov:
+                card += f"<h4>核心创新</h4><p>{core_innov}</p>"
+            if datasets:
+                card += f"<h4>数据集</h4><p>{datasets}</p>"
+            if experiments:
+                card += f"<h4>实验参数</h4><p>{experiments}</p>"
+            if results:
+                card += f"<h4>结果对比</h4><p>{results}</p>"
+            if limits:
+                card += f"<h4>局限性</h4><p>{limits}</p>"
+            card += """
+                </div>
+            </details>"""
     return card

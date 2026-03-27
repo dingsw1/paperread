@@ -12,6 +12,7 @@ from evaluator import evaluate_paper
 from filter import assign_category, filter_papers
 from html_generator import generate_html
 from paper_detail import fetch_paper_details
+from fulltext_extractor import download_pdf, extract_text_from_pdf, parse_full_text
 
 
 def load_run_state(state_path: str) -> dict:
@@ -44,6 +45,7 @@ def main():
     parser.add_argument("--max-papers", type=int, help="最大论文数", default=20)
     parser.add_argument("--output", type=str, help="输出路径", default=None)
     parser.add_argument("--api-key", type=str, help="OpenAI API Key", default=None)
+    parser.add_argument("--extract-fulltext", action="store_true", help="Extract and parse full text from PDFs")
     args = parser.parse_args()
 
     target_date = datetime.now()
@@ -77,16 +79,31 @@ def main():
     print(f"   过滤后剩余 {len(papers)} 篇")
 
     new_candidates = [p for p in papers if p.get("arxiv_id") not in prev_ids]
-    allowed_new = max(0, len(papers) == 0 and 0 or (args.max_papers - len(prev_papers)))
+    allowed_new = max(0, args.max_papers - len(prev_papers))
     new_papers = new_candidates[:allowed_new]
 
     if new_papers:
         print(f"✨ 发现 {len(new_papers)} 篇新文献，将仅对新文献进行分析...")
-        for i, paper in enumerate(new_papers):
-            print(f"   [{i + 1}/{len(new_papers)}] {paper['arxiv_id']}")
-            details = fetch_paper_details(paper["arxiv_id"])
-            paper.update(details)
-            paper["category"] = assign_category(paper)
+    for i, paper in enumerate(new_papers):
+        print(f"   [{i + 1}/{len(new_papers)}] {paper['arxiv_id']}")
+        details = fetch_paper_details(paper["arxiv_id"])
+        paper.update(details)
+        paper["category"] = assign_category(paper)
+
+        # Optional: Full-text extraction & parsing
+        if args.extract_fulltext:
+            arxiv_id = paper.get("arxiv_id")
+            pdf_url = paper.get("pdf_url") or f"https://arxiv.org/pdf/{arxiv_id}.pdf"
+            pdf_path = os.path.join(output_dir, f"pdf_{arxiv_id}.pdf")
+            ok = download_pdf(pdf_url, pdf_path)
+            if ok:
+                text = extract_text_from_pdf(pdf_path)
+                parsed = parse_full_text(text)
+                paper["fulltext"] = text
+                paper["fulltext_parsed"] = parsed
+            else:
+                paper["fulltext_parsed"] = {}
+                paper["fulltext"] = ""
 
         api_key = args.api_key or os.environ.get("OPENAI_API_KEY")
         if api_key:
